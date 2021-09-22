@@ -3,7 +3,7 @@ LandChecker Registration Page Initial Automation
 
 My second attempt in the initial automation of LandChecker's registration page.
 
-In this test automation repo, I have initially created 18 test cases namely:
+In this test automation repo, I have initially created 19 test cases namely:
 
 - Registration - Check if the Page Title is consistent or not
 - Registration - Check existence of the registration page header
