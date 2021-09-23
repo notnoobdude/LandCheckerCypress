@@ -3,7 +3,7 @@ LandChecker Registration Page Initial Automation
 
 My second attempt in the initial automation of LandChecker's registration page.
 
-In this test automation repo, I have initially created 19 test cases namely:
+In this test automation repo, I have initially created 20 test cases namely:
 
 - Registration - Check if the Page Title is consistent or not
 - Registration - Check existence of the registration page header
@@ -16,6 +16,7 @@ In this test automation repo, I have initially created 19 test cases namely:
 - Registration - First Name input field allows entry of string value
 - Registration - Last Name input field allows entry of string value
 - Registration - Email input field allows entry of string value
+- Registration - Invalid Email Address Error is triggered
 - Registration - Password input field allows entry of string value
 - Registration - Company Name input field allows entry of string value
 - Registration - Check dropdown availability and choose Real Estate Agent in the given options
