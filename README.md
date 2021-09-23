@@ -29,5 +29,5 @@ In this test automation repo, I have initially created 20 test cases namely:
 Note that this could've been implemented faster upon running, I added slow typing on certain input fields apart from the automatic one.
 
 And can be ran locally. The automated testing framework used is Cypress.
-Recording of running automation done on : https://youtu.be/NZ1l3qIqwDE
+Recording of running automation done on : https://youtu.be/8gROloj6afI
 
