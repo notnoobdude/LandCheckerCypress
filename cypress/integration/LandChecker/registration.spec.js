@@ -9,26 +9,24 @@
 
 
     it('Registration - Check existence of the registration page header', () => {
-        cy.get('div:nth-child(3) div.jss40 header.jss64.jss66.jss55.jss56.jss62.mui-fixed.jss41:nth-child(1) div.jss91.jss93.jss92.jss43 > div.jss51.jss42')
-        .should('be.visible')
+        cy.get('[data-test=appBar-contentMenu]').should('be.visible')
+        cy.get('[data-test=appBar-home-link]').should('be.visible')
+        cy.get('[data-test=appBar-logo-img]').should('be.visible')
     })
 
 
     it('Registration - First Name Requirement Error works as intended', () => {
-        cy.get('div > div > div > div > div.jss111 > form > div:nth-child(8) > button')
+        cy.get('[data-test=submitButton-button]')
         .scrollIntoView()
         .click()
-
-        cy.wait(1000)
-
-        cy.get('div > div > div > div > div.jss111 > form > div:nth-child(1) > div.jss333.jss334.jss336.jss331 > p')
+        cy.get('[data-test=signUpForm-firstName]').find('p')
         .contains('First Name is required')
         .should('be.visible')
     })
 
 
     it('Registration - Last Name Requirement Error works as intended', () => {
-        cy.get('div > div > div > div > div.jss111 > form > div:nth-child(1) > div.jss333.jss334.jss336.jss332 > p')
+        cy.get('[data-test=signUpForm-lastName]').find('p')
         .contains('Last Name is required')
         .scrollIntoView()
         .should('be.visible')
@@ -36,7 +34,7 @@
 
 
     it('Registration - Email Address Requirement Error works as intended', () => {
-        cy.get('div > div > div > div > div.jss111 > form > div:nth-child(2) > p')
+        cy.get('[data-test=signUpForm-email]').find('p')
         .contains('Email is required')
         .scrollIntoView()
         .should('be.visible')
@@ -44,14 +42,14 @@
 
 
     it('Registration - Password Requirement Error works as intended', () => {
-        cy.get('div > div > div > div > div.jss111 > form > div:nth-child(3) > p')
+        cy.get('[data-test=signUpForm-password]').find('p') 
         .contains('Password is required')
         .scrollIntoView()
         .should('be.visible')
     })
 
     it('Registration - Occupation Requirement Error works as intended', () => {
-        cy.get('div > div > div > div > div.jss111 > form > div:nth-child(4) > div.jss333.jss334.jss336.jss332 > p')
+        cy.get('[data-test=signUpForm-occupation]').find('p') 
         .contains('Occupation is required')
         .scrollIntoView()
         .should('be.visible')
@@ -59,7 +57,7 @@
 
 
     it('Registration - Terms of Use Requirement Error works as intended', () => {
-        cy.get('#root > div > div > div > div > div.jss111 > form > div:nth-child(6) > p')
+        cy.get('[data-test=reduxCheckboxField-error]')
         .contains('Terms of Use must be accepted')
         .scrollIntoView()
         .should('be.visible')
@@ -67,124 +65,112 @@
 
 
     it('Registration - First Name input field allows entry of string value', () => {
-        cy.get('div > div > div > div > div.jss111 > form > div:nth-child(1) > div.jss333.jss334.jss336.jss331 > div > input')
+        cy.get('[data-test=signUpForm-firstName]').find('input')
         .scrollIntoView()
         .type('John')
-        cy.get('div > div > div > div > div.jss111 > form > div:nth-child(1) > div.jss333.jss334.jss336.jss331 > p')
+        cy.get('[data-test=signUpForm-firstName]').find('p')
         .should('not.exist', 'First Name is required')
-        cy.get('div > div > div > div > div.jss111 > form > div:nth-child(1) > div.jss333.jss334.jss336.jss331 > div > input')
+        cy.get('[data-test=signUpForm-firstName]').find('input')
         .should('have.value', 'John')
         .clear()
         .should('have.value', '')
-        //slow typing
-        .type('John', { delay: 100 })
-        .should('have.value', 'John')
     })
 
 
     it('Registration - Last Name input field allows entry of string value', () => {
-        cy.get('div > div > div > div > div.jss111 > form > div:nth-child(1) > div.jss333.jss334.jss336.jss332 > div > input')
+        cy.get('[data-test=signUpForm-lastName]').find('input')
         .scrollIntoView()
         .type('Cena')
-        cy.get('div > div > div > div > div.jss111 > form > div:nth-child(1) > div.jss333.jss334.jss336.jss332 > p')
+        cy.get('[data-test=signUpForm-lastName]').find('p')
         .should('not.exist', 'Last Name is required')
-        cy.get('div > div > div > div > div.jss111 > form > div:nth-child(1) > div.jss333.jss334.jss336.jss332 > div > input')
+        cy.get('[data-test=signUpForm-lastName]').find('input')
         .should('have.value', 'Cena')
         .clear()
         .should('have.value', '')
-        //slow typing
-        .type('Cena', { delay: 100 })
-        .should('have.value', 'Cena')
     })
 
 
     it('Registration - Email input field allows entry of string value', () => {
-        cy.get('div > div > div > div > div.jss111 > form > div:nth-child(2) > div > input')
+        cy.get('[data-test=signUpForm-email]').find('input')
         .scrollIntoView()
         .type('johncena.123@testemail.com')
-        cy.get('div > div > div > div > div.jss111 > form > div:nth-child(2) > p')
+        cy.get('[data-test=signUpForm-email]').find('p')
         .should('not.exist', 'Email is required')
-        cy.get('div > div > div > div > div.jss111 > form > div:nth-child(2) > div > input')
+        cy.get('[data-test=signUpForm-email]').find('input')
         .should('have.value', 'johncena.123@testemail.com')
         .clear()
         .should('have.value', '')
-        //slow typing
-        .type('johncena.123@testemail.com', { delay: 100 })
-        .should('have.value', 'johncena.123@testemail.com')
+    })
+
+    it('Registration - Invalid Email Address Error is triggered', () => {
+        cy.get('[data-test=signUpForm-email]').find('input')
+        .scrollIntoView()
+        .type('johncena.123@/')
+        cy.get('[data-test=signUpForm-email]').find('p')
+        .should('have.text', 'Invalid email address')
+        .and('be.visible')
     })
 
 
     it('Registration - Password input field allows entry of string value', () => {
-        cy.get('div > div > div > div > div.jss111 > form > div:nth-child(3) > div > input')
+        cy.get('[data-test=signUpForm-password]').find('input')
         .scrollIntoView()
         .type('youcantseethispassword!123!')
-        cy.get('div > div > div > div > div.jss111 > form > div:nth-child(3) > p')
+        cy.get('[data-test=signUpForm-password]').find('p')
         .should('not.exist', 'Password is required')
-        cy.get('div > div > div > div > div.jss111 > form > div:nth-child(3) > div > input')
+        cy.get('[data-test=signUpForm-password]').find('input')
         .should('have.value', 'youcantseethispassword!123!')
         .clear()
         .should('have.value', '')
-        //slow typing
-        .type('youcantseethispassword!123!', { delay: 100 })
-        .should('have.value', 'youcantseethispassword!123!')
     })
 
 
     it('Registration - Company Name input field allows entry of string value', () => {
-        cy.get('#root > div > div > div > div > div.jss111 > form > div:nth-child(4) > div.jss333.jss334.jss336.jss331 > div > input')
+        cy.get('[data-test=signUpForm-company]').find('input')
         .scrollIntoView()
         .click()
         .type('John Cena Company')
         .should('have.value', 'John Cena Company')
-        .click()
         .clear()
         .should('have.value', '')
-        //slow typing
-        cy.get('#root > div > div > div > div > div.jss111 > form > div:nth-child(4) > div.jss333.jss334.jss336.jss331 > div > input')
-        .click()
-        .type('John Cena Company', { delay: 100 })
-        .should('have.value', 'John Cena Company')
     })
 
 
     it('Registration - Check dropdown availability and choose Real Estate Agent in the given options', () => {
         cy.get('#select-occupation')
         .click()
-        cy.get('#menu-occupation > div.jss64.jss408.jss74.jss65.jss409')
-        .should('be.visible')
-        cy.get('#menu-occupation > div.jss64.jss408.jss74.jss65.jss409 > ul > li:nth-child(2)')
-        .click()
-        cy.get('#select-occupation')
-        .should('have.text', 'Real Estate Agent')
+        cy.get('#menu-occupation').should('be.visible')
+        cy.get('[data-test=signUpForm-occupation-real_estate_agent]').click()
+        cy.get('#select-occupation').should('have.text', 'Real Estate Agent')
     })
 
 
     it('Registration - Verify State Checkboxes if clickable or not', () => {
-        cy.get('[name="NSW"]').not('[disabled]')
+        cy.get('[data-test=signUpForm-state-NSW]').not('[disabled]').find('input')
         .check().should('be.checked')
 
-        cy.get('[name="VIC"]').not('[disabled]')
+        cy.get('[data-test=signUpForm-state-VIC]').not('[disabled]').find('input')
         .check().should('be.checked')
 
-        cy.get('[name="QLD"]').not('[disabled]')
+        cy.get('[data-test=signUpForm-state-QLD]').not('[disabled]').find('input')
         .check().should('be.checked')
 
-        cy.get('[name="TAS"]').not('[disabled]')
+        cy.get('[data-test=signUpForm-state-TAS]').not('[disabled]').find('input')
         .check().should('be.checked')
 
-        cy.get('[name="SA"]').not('[disabled]')
+        cy.get('[data-test=signUpForm-state-SA]').not('[disabled]').find('input')
         .check().should('be.checked')
     })
 
 
     it('Registration - Verify Terms of Use checkbox if clickable or not', () => {
-        cy.get('[name="accepted_terms"]').not('[disabled]')
+        cy.get('[data-test=signUpForm-acceptTerms]').not('[disabled]').find('input')
         .check().should('be.checked')
     })
 
 
     it('Registration - Verify Terms Of Use Redirect', () => {
-        cy.get('div > div > div > div > div.jss111 > form > div:nth-child(6) > label > span.jss261.jss269.jss419 > legend > a')
+        cy.get('[data-test=reduxCheckboxField-label]').find('a')
         .should('have.attr', 'href', 'https://s3-ap-southeast-2.amazonaws.com/landchecker-images/legals/terms-and-conditions.pdf')
         .and('have.attr','target', '_blank')
         .then(link => {
@@ -196,14 +182,15 @@
 
 
     it('Registration - Verify Existence of Footer', () => {
-        cy.get('body:nth-child(2) div:nth-child(3) div.jss40 header.jss64.jss66.jss55.jss59.jss62.jss118:nth-child(3) > div.jss91.jss94.jss92.jss119')
+        cy.get('[data-test=footer-toolbar]')
         .should('be.visible')
     })
 
 
     it('Registration - Verify Login Redirection', () => {
-        cy.get('div > div > div > div > div.jss111 > h6 > a')
+        cy.get('a[color="primary"]')
         .should('have.attr', 'href', '/login')
+        .and('have.attr','color','primary')
         .then(link => {
             cy.request(link.prop('href'))
             .its('status')
